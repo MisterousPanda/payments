@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { BankScrubber } from "@/components/BankScrubber"
+import { ShipMug } from "@/components/ShipMug"
 import { PayUrlLab } from "@/components/PayUrlLab"
 import { WalletShelf } from "@/components/WalletShelf"
 
@@ -18,9 +19,10 @@ export default function StudioPage() {
           <p className="kicker">Studio</p>
           <h1 className="display">Practice without a rail</h1>
           <p className="deck">
-            Four lessons. The first two run on this page. The third is homework
-            in Stripe test mode, on your own machine. The fourth builds a devnet
-            URL and then stops. No seed phrases. No live keys.
+            Four lessons. Every control here is a model. The first two run on
+            this page. The third is homework in Stripe test mode, on your own
+            machine. The fourth builds a devnet URL and then stops. No seed
+            phrases. No live keys.
           </p>
         </div>
       </header>
@@ -40,11 +42,18 @@ export default function StudioPage() {
             to the processor behind it, do not type a card number into it.
           </p>
 
-          <h2>Lesson 2. Stay inside the return window</h2>
+          <h2>Lesson 2. One mug, three clocks</h2>
           <p>
-            Goal: feel the difference between day 0 and day 40. Drag slowly.
-            Notice that day 4 is availability, not forgiveness. The same model
-            is explained on the <Link href="/bank">bank</Link> page.
+            Goal: watch the same $40 sale sit in different places, then decide
+            whether the mug should leave the shelf. Shipping on the first
+            afternoon is ordinary for a captured card, reckless for a young ACH
+            debit, and calm for USDC only after finalized.
+          </p>
+          <ShipMug />
+          <p>
+            The bank column has a longer memory than the button. Drag the day.
+            Day 4 is availability, not forgiveness. The same model is explained
+            on the <Link href="/bank">bank</Link> page.
           </p>
           <BankScrubber />
           <p className="stop">

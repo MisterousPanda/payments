@@ -184,9 +184,11 @@ export default function PathPage() {
             <li>
               <strong>The descriptor is cute.</strong> A random string produces
               “I don’t recognize this” disputes. Networks count disputes even
-              when you win them. Stripe treats activity above about 0.75% as the
-              line people watch. A spike can restrict processing before you
-              notice.
+              when you win them. A spike can restrict processing. Stripe’s{" "}
+              <a href="https://docs.stripe.com/disputes/measuring">
+                dispute measuring guide
+              </a>{" "}
+              has the current thresholds.
             </li>
             <li>
               <strong>You wait for a dispute instead of refunding.</strong> If

@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Clearing } from "@/components/Clearing"
+import { InvoiceTrio } from "@/components/InvoiceTrio"
 import { FeeRuler } from "@/components/FeeRuler"
 import { SettlementClock } from "@/components/SettlementClock"
 import { SourceDrawer } from "@/components/SourceDrawer"
@@ -38,6 +39,31 @@ export default function HomePage() {
       </p>
       <FeeRuler />
       <SettlementClock />
+      <section className="section">
+        <div className="wrap measure prose">
+          <h2>Follow a $400 consult</h2>
+          <p>
+            Same job, three rails. The customer is paying for an afternoon. You
+            have not shipped a physical good, so the return window is easier to
+            live with than it would be for a laptop.
+          </p>
+        </div>
+        <div className="wrap">
+          <InvoiceTrio />
+        </div>
+        <div className="wrap measure prose">
+          <p>
+            The card row is the one to turn on this week. Apple Pay is that same
+            row, if the customer is in Safari with a card in the wallet. The bank
+            row is cheaper and slower, and day 4 is not the end of the risk. The
+            USDC row is cheaper than the card only if you are willing to learn a
+            mint address and a second set of books. The{" "}
+            <Link href="/path">setup page</Link> is the order of operations. The
+            table above also includes a $25 tip, where the 30¢ flat fee hurts,
+            and an $1,800 retainer, where the ACH cap starts to matter.
+          </p>
+        </div>
+      </section>
       <section className="section">
         <div className="wrap measure prose">
           <h2>Do this first</h2>

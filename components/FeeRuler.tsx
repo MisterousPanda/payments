@@ -86,10 +86,15 @@ export function FeeRuler() {
             />
           </div>
         ) : null}
+        <p className="quiet">The ACH cap binds at $625. Above that, the ACH fee stays $5.</p>
         <div className="fee-scale" aria-hidden="true">
+          <span className="scale-start" style={{ left: "0%" }}>
+            $0
+          </span>
           <i style={{ left: `${(ACH_CAP_DOLLARS / 2000) * 100}%` }} />
-          <span style={{ left: `${(ACH_CAP_DOLLARS / 2000) * 100}%` }}>
-            The ACH cap binds at $625
+          <span style={{ left: `${(ACH_CAP_DOLLARS / 2000) * 100}%` }}>$625</span>
+          <span className="scale-end" style={{ left: "100%" }}>
+            $2,000
           </span>
         </div>
         {rows.map((row) => {
@@ -107,7 +112,7 @@ export function FeeRuler() {
                     <div
                       className="fee-brass"
                       style={{
-                        width: `max(4px, ${(30 / card) * 100}%)`,
+                        width: `${Math.max((30 / card) * 100, 0.8)}%`,
                       }}
                     />
                   ) : null}

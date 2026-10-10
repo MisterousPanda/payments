@@ -32,40 +32,17 @@ export function Clearing() {
             options={RAILS.map((item) => ({ id: item.id, label: item.label }))}
             onChange={(id) => setRail(id as RailId)}
           />
-          <div className="diagram-wide stage">
-            <svg className="rail-svg" viewBox="0 0 960 210" aria-hidden="true">
-              <line
-                x1="80"
-                y1="100"
-                x2="880"
-                y2="100"
-                stroke="#8A7044"
-                strokeWidth="1.5"
-              />
-              <rect className="wax-line" x="80" y="99" width="800" height="2" />
-              {STATIONS.map((percent) => {
-                const x = (percent / 100) * 960
-                return (
-                  <rect
-                    key={percent}
-                    x={x - 6}
-                    y="94"
-                    width="12"
-                    height="12"
-                    fill="none"
-                    stroke="#161513"
-                    strokeWidth="1.5"
-                  />
-                )
-              })}
-              <path
-                className="return-arc"
-                d="M 680 118 Q 780 158 880 118"
-                pathLength="100"
-              />
-              <rect className="brass-lock" x="476" y="78" width="8" height="8" fill="none" stroke="#8A7044" strokeWidth="1.5" />
-              <circle className="packet" r="7" cx="80" cy="100" />
-            </svg>
+          <div className="diagram-wide">
+            <div className="rail-box" aria-hidden="true">
+              <div className="rail-line" />
+              <div className="wax-line" />
+              {STATIONS.map((percent) => (
+                <i key={percent} className="station-square" style={{ left: `${percent}%` }} />
+              ))}
+              <i className="return-arc" />
+              <i className="brass-lock" />
+              <i className="mover" />
+            </div>
             <div className="station-labels">
               {labels.map((label, index) => (
                 <span key={STATIONS[index]} style={{ left: `${STATIONS[index]}%` }}>

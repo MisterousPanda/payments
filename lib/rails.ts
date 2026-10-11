@@ -9,6 +9,7 @@ export type Rail = {
   plaque: string
   caption: string
   clockNote: string
+  figure: { src: string; alt: string } | null
 }
 
 export const RAILS: readonly Rail[] = [
@@ -23,6 +24,7 @@ export const RAILS: readonly Rail[] = [
       "The network authorizes a hold; the deposit arrives about two business days after capture.",
     clockNote:
       "Available is not final. Card disputes run on a separate, longer calendar.",
+    figure: null,
   },
   {
     id: "apple",
@@ -34,6 +36,10 @@ export const RAILS: readonly Rail[] = [
     caption:
       "A device token stands in for the card number; capture and settlement still use the card rail.",
     clockNote: "Same clock as card.",
+    figure: {
+      src: "/rails/apple-token-rail.jpg",
+      alt: "A wax circle labeled Token sits on a phone and continues through two open squares to a solid square. Apple Pay is a token on the same card rail.",
+    },
   },
   {
     id: "bank",
@@ -43,9 +49,13 @@ export const RAILS: readonly Rail[] = [
     tag: "Plaid · account check",
     plaque: "Verified is not settled.",
     caption:
-      "Plaid only checks the account. The ACH debit settles on its own, slower clock.",
+      "Plaid only checks the account. The ACH debit settles on its own clock, and an unauthorized consumer return can still come back for about 60 days.",
     clockNote:
       "Ordinary returns, about two banking days. Unauthorized consumer debits can be returned for up to 60 days.",
+    figure: {
+      src: "/rails/bank-check-gap.jpg",
+      alt: "A brass seal ends on a short line. A wax parcel sits on a later line that has not reached the square. Checking the account is not the money arriving.",
+    },
   },
   {
     id: "usdc",
@@ -58,6 +68,7 @@ export const RAILS: readonly Rail[] = [
       "Solana finality is seconds. Stripe’s 1.5% is the fee; this transfer has no card-style return window.",
     clockNote:
       "This mark is on-chain finality for USDC the LLC keeps. Cashing out to a bank is a different clock and is not drawn.",
+    figure: null,
   },
 ]
 

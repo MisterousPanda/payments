@@ -32,7 +32,13 @@ export function FeeRuler() {
     international,
   })
   const card = priced.cardCents
-  const rows = [
+  const rows: Array<{
+    name: string
+    fee: number | null
+    note: string
+    brass: boolean
+    tooth: boolean
+  }> = [
     {
       name: "Card",
       fee: priced.cardCents,
@@ -54,7 +60,22 @@ export function FeeRuler() {
       brass: false,
       tooth: false,
     },
+    {
+      name: "Venmo",
+      fee: priced.venmoCents,
+      note: "3.49% + $0.49. PayPal Checkout, US buyers.",
+      brass: false,
+      tooth: false,
+    },
+    {
+      name: "Zelle",
+      fee: null,
+      note: "Your bank sets the fee and the limit. Often no Zelle fee. Not priced here.",
+      brass: false,
+      tooth: false,
+    },
   ]
+  const maxFee = Math.max(card, priced.venmoCents, 1)
 
   return (
     <section className="section" aria-labelledby="fee-title">
@@ -63,7 +84,8 @@ export function FeeRuler() {
           <h2 id="fee-title">What a sample charge costs</h2>
           <p>
             Illustrative. Card is 2.9% + $0.30. ACH is 0.8% up to $5. USDC via
-            Stripe is 1.5%.
+            Stripe is 1.5%. Venmo on the web is PayPal’s 3.49% + $0.49. Zelle
+            is not a processor price.
           </p>
         </div>
         <RailToggle
@@ -98,25 +120,27 @@ export function FeeRuler() {
           </span>
         </div>
         {rows.map((row) => {
-          const scale = card > 0 ? row.fee / card : 0
+          const scale = row.fee != null && maxFee > 0 ? row.fee / maxFee : 0
           return (
             <div className="fee-row" key={row.name}>
               <div className="fee-name">{row.name}</div>
               <div>
                 <div className="fee-track" aria-hidden="true">
-                  <div
-                    className="fee-bar"
-                    style={{ transform: `scaleX(${Math.min(1, scale)})` }}
-                  />
+                  {row.fee != null ? (
+                    <div
+                      className="fee-bar"
+                      style={{ transform: `scaleX(${Math.min(1, scale)})` }}
+                    />
+                  ) : null}
                   {row.brass && card > 0 ? (
                     <div
                       className="fee-brass"
                       style={{
-                        width: `${Math.max((30 / card) * 100, 0.8)}%`,
+                        width: `${Math.max((30 / maxFee) * 100, 0.8)}%`,
                       }}
                     />
                   ) : null}
-                  {row.tooth ? (
+                  {row.tooth && row.fee != null ? (
                     <div
                       className="fee-tooth"
                       style={{ left: `calc(${scale * 100}% - 1px)` }}
@@ -126,14 +150,22 @@ export function FeeRuler() {
                 <span className="fee-note">{row.note}</span>
               </div>
               <div className="fee-figure" key={`${row.name}-${priced.amountCents}-${keyed}-${international}`}>
-                <strong>{valid ? moneyFromCents(row.fee) : "—"}</strong>
+                <strong>
+                  {row.fee == null ? "Bank terms" : valid ? moneyFromCents(row.fee) : "—"}
+                </strong>
                 <span>
-                  {valid ? percentOf(row.fee, priced.amountCents) : "—"} of the charge
+                  {row.fee == null
+                    ? "No list price on this page"
+                    : valid
+                      ? `${percentOf(row.fee, priced.amountCents)} of the charge`
+                      : "—"}
                 </span>
                 <span className="fee-keep">
-                  {valid
-                    ? `You keep ${moneyFromCents(keepCents(priced.amountCents, row.fee))}`
-                    : "Enter an amount from $1 to $20,000."}
+                  {row.fee == null
+                    ? "Confirm the deposit in the business account."
+                    : valid
+                      ? `You keep ${moneyFromCents(keepCents(priced.amountCents, row.fee))}`
+                      : "Enter an amount from $1 to $20,000."}
                 </span>
               </div>
             </div>
@@ -170,9 +202,12 @@ export function FeeRuler() {
             </p>
             <p>
               ACH stays the cheap rail once the cap binds at $625. USDC via
-              Stripe stays a flat 1.5% and beats the card on both samples. None
-              of this is a quote for your account. Custom pricing, currency
-              conversion, and disputes sit outside the picture.
+              Stripe stays a flat 1.5% and beats the card on both samples.
+              Venmo on the web is the expensive row on a small charge because
+              of the $0.49. The in-app Venmo business profile is a different
+              fee and is not drawn. Zelle stays off the ruler. None of this is
+              a quote for your account. Custom pricing, currency conversion,
+              and disputes sit outside the picture.
             </p>
           </div>
         </aside>

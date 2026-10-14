@@ -1002,7 +1002,8 @@ a {
 }
 
 .clearing[data-rail="card"] .mover,
-.clearing[data-rail="apple"] .mover {
+.clearing[data-rail="apple"] .mover,
+.clearing[data-rail="venmo"] .mover {
   animation: travel-card 2500ms infinite, fill-card 2500ms linear infinite;
 }
 
@@ -1011,7 +1012,8 @@ a {
   background: var(--wax);
 }
 
-.clearing[data-rail="usdc"] .mover {
+.clearing[data-rail="usdc"] .mover,
+.clearing[data-rail="zelle"] .mover {
   animation: travel-usdc 1800ms infinite;
   background: var(--wax);
 }
@@ -1023,7 +1025,8 @@ a {
 }
 
 .clearing[data-rail="card"] .wax-line,
-.clearing[data-rail="apple"] .wax-line {
+.clearing[data-rail="apple"] .wax-line,
+.clearing[data-rail="venmo"] .wax-line {
   animation: grow-line 2500ms infinite;
 }
 
@@ -1031,7 +1034,8 @@ a {
   animation: grow-line-bank 2900ms infinite;
 }
 
-.clearing[data-rail="usdc"] .wax-line {
+.clearing[data-rail="usdc"] .wax-line,
+.clearing[data-rail="zelle"] .wax-line {
   animation: grow-line-usdc 1800ms infinite;
 }
 
@@ -1066,7 +1070,8 @@ a {
 }
 
 .clearing[data-rail="card"] .stack-packet,
-.clearing[data-rail="apple"] .stack-packet {
+.clearing[data-rail="apple"] .stack-packet,
+.clearing[data-rail="venmo"] .stack-packet {
   animation: stack-card 2500ms infinite, stack-fill 2500ms linear infinite;
 }
 
@@ -1075,7 +1080,8 @@ a {
   background: var(--wax);
 }
 
-.clearing[data-rail="usdc"] .stack-packet {
+.clearing[data-rail="usdc"] .stack-packet,
+.clearing[data-rail="zelle"] .stack-packet {
   animation: stack-usdc 1800ms infinite;
   background: var(--wax);
 }
@@ -1335,7 +1341,7 @@ a {
   }
 
   .shelf {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .clocks {

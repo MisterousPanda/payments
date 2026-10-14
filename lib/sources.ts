@@ -97,6 +97,18 @@ export const SOURCES: readonly Source[] = [
     note: "The other US instant credit network. No direct debit.",
   },
   {
+    group: "Bank",
+    name: "Zelle for businesses",
+    href: "https://www.zelle.com/business",
+    note: "The customer sends from a bank app. Minutes when both sides are enrolled.",
+  },
+  {
+    group: "Bank",
+    name: "Zelle small business FAQ",
+    href: "https://www.zelle.com/faq/small-business",
+    note: "The business fee depends on the bank. Not every bank offers it on a business account.",
+  },
+  {
     group: "Wallets",
     name: "Configure Apple Pay on the web",
     href: "https://developer.apple.com/help/account/capabilities/configure-apple-pay-on-the-web/",

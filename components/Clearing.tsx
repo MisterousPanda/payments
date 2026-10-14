@@ -9,7 +9,7 @@ const STATIONS = [10, 30, 50, 70, 90]
 export function Clearing() {
   const [rail, setRail] = useState<RailId>("card")
   const current = RAILS.find((item) => item.id === rail) ?? RAILS[0]
-  const labels = ["Payer", current.instrument, current.rail, "Stripe", "Account"]
+  const labels = ["Payer", current.instrument, current.rail, current.desk, "Account"]
 
   return (
     <section className="hero" aria-labelledby="clearing-title">
@@ -20,7 +20,7 @@ export function Clearing() {
             How the money actually arrives
           </h1>
           <p className="deck">
-            Four rails into one account. Authorization is not settlement, and
+            Six ways into one account. Authorization is not settlement, and
             settlement is not always final.
           </p>
         </div>

@@ -6,7 +6,7 @@ import { BankScrubber } from "@/components/BankScrubber"
 export const metadata: Metadata = {
   title: "Bank payments",
   description:
-    "Plaid, Stripe Financial Connections, ACH, RTP, and FedNow for a US LLC website.",
+    "Plaid, Stripe Financial Connections, ACH, Zelle, RTP, and FedNow for a US LLC website.",
 }
 
 export default function BankPage() {
@@ -24,7 +24,7 @@ export default function BankPage() {
           <ul className="toc">
             <li><a href="#plaid">What Plaid is</a></li>
             <li><a href="#stripe">Stripe’s linker</a></li>
-            <li><a href="#rails">Five ways a bank pays</a></li>
+            <li><a href="#rails">Six ways a bank pays</a></li>
             <li><a href="#window">The return window</a></li>
             <li><a href="#rules">What the site must keep</a></li>
           </ul>
@@ -84,7 +84,7 @@ export default function BankPage() {
             European open banking, not US RTP.
           </p>
 
-          <h2 id="rails">Five ways a bank pays</h2>
+          <h2 id="rails">Six ways a bank pays</h2>
         </div>
         <div className="wrap">
           <div className="sheet-scroll">
@@ -110,6 +110,12 @@ export default function BankPage() {
                   <td>The customer’s bank pushes.</td>
                   <td>When it arrives. You wait.</td>
                   <td>It can reject. It is not the same consumer-debit right.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Zelle</th>
+                  <td>The customer’s bank pushes, to an email, U.S. mobile number, or Zelle tag you enrolled.</td>
+                  <td>Typically minutes when both sides are enrolled. The bank has to offer Zelle for that business account.</td>
+                  <td>Not a card dispute and not an ACH return. Purchase protection is generally not included. Confirm the deposit.</td>
                 </tr>
                 <tr>
                   <th scope="row">RTP</th>
@@ -142,6 +148,16 @@ export default function BankPage() {
             on a small charge. Plaid’s public price card was not found for this
             lesson. Treat any other processor’s ACH, RTP, or FedNow fee as a
             contract, not a number from this page.
+          </p>
+          <p>
+            Zelle is the push that skips the processor. Early Warning runs the
+            network. You enroll through a bank that offers Zelle on the LLC’s
+            account type. Not every bank that offers consumer Zelle offers it
+            for a business account. Zelle’s small-business FAQ says the fee
+            depends on the institution. A Q1 2026 figure Zelle publishes, that
+            99.40% of linked consumer accounts pay no send or receive fee, is
+            about consumers, not a promise for the LLC. There is no Stripe
+            button for it. Ship when the business account shows the money.
           </p>
 
           <h2 id="window">The return window</h2>

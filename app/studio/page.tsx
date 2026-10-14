@@ -31,8 +31,8 @@ export default function StudioPage() {
           <h2>Lesson 1. Read the shelf</h2>
           <p>
             Goal: say, out loud, what moves on each rail. Open a docket. Notice
-            that Apple Pay’s “what moves” line is still a card charge, and that
-            the bank docket never says Plaid deposits the money.
+            that Apple Pay’s “what moves” line is still a card charge, that
+            Venmo’s line names PayPal, and that Zelle never mentions Stripe.
           </p>
         </div>
         <WalletShelf embedded />
@@ -42,12 +42,13 @@ export default function StudioPage() {
             to the processor behind it, do not type a card number into it.
           </p>
 
-          <h2>Lesson 2. One mug, three clocks</h2>
+          <h2>Lesson 2. One mug, five clocks</h2>
           <p>
             Goal: watch the same $40 sale sit in different places, then decide
             whether the mug should leave the shelf. Shipping on the first
             afternoon is ordinary for a captured card, reckless for a young ACH
-            debit, and calm for USDC only after finalized.
+            debit, and calm for USDC only after finalized. Venmo waits on the
+            PayPal balance. Zelle waits on the business-account deposit.
           </p>
           <ShipMug />
           <p>

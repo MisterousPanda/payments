@@ -7,6 +7,8 @@ export const INTERNATIONAL_BPS = 150
 export const ACH_BPS = 80
 export const ACH_CAP_CENTS = 500
 export const USDC_STRIPE_BPS = 150
+export const VENMO_BPS = 349
+export const VENMO_FLAT_CENTS = 49
 export const ACH_CAP_DOLLARS = 625
 
 export type Quote = {
@@ -14,6 +16,7 @@ export type Quote = {
   cardCents: number
   achCents: number
   usdcCents: number
+  venmoCents: number
   achCapped: boolean
 }
 
@@ -35,11 +38,14 @@ export function quote(
   const achRaw = Math.round((safe * ACH_BPS) / 10000)
   const achCents = Math.min(achRaw, ACH_CAP_CENTS)
   const usdcCents = Math.round((safe * USDC_STRIPE_BPS) / 10000)
+  const venmoCents =
+    Math.round((safe * VENMO_BPS) / 10000) + VENMO_FLAT_CENTS
   return {
     amountCents: safe,
     cardCents: safe === 0 ? 0 : cardCents,
     achCents: safe === 0 ? 0 : achCents,
     usdcCents: safe === 0 ? 0 : usdcCents,
+    venmoCents: safe === 0 ? 0 : venmoCents,
     achCapped: achRaw >= ACH_CAP_CENTS && safe > 0,
   }
 }

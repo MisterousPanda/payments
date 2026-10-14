@@ -21,6 +21,20 @@ const COLUMNS = [
     ship: "Shipping today is reckless. A consumer’s unauthorized debit can come back for about 60 days.",
   },
   {
+    title: "Venmo",
+    fee: moneyFromCents(priced.venmoCents),
+    wait: "Approved in the Venmo app, then held in PayPal. The bank payout is a later PayPal step.",
+    hold: "The mug stays until the PayPal balance shows the payment. A screenshot of the app is not that balance.",
+    ship: "Shipping after the payment is in PayPal is ordinary for a $40 mug. A PayPal dispute is still possible.",
+  },
+  {
+    title: "Zelle",
+    fee: "Bank terms",
+    wait: "Typically minutes into the business account, if both sides are enrolled.",
+    hold: "The mug stays until the business account shows the deposit. A text screenshot is not the deposit.",
+    ship: "Shipping after the deposit is visible is the calm case. There is generally no purchase protection to lean on.",
+  },
+  {
     title: "USDC",
     fee: moneyFromCents(priced.usdcCents),
     wait: "Confirmed, then finalized about 13 seconds later, if you keep the token.",

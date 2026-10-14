@@ -27,6 +27,14 @@ const MYTHS = [
     title: "USDC in a wallet is not dollars in the bank.",
     body: "On-chain finality is seconds. Cashing out is a different clock, and the IRS treats the token as property.",
   },
+  {
+    title: "Venmo on a website is PayPal.",
+    body: "It is a funding source on PayPal Checkout, at the domestic checkout rate, for US buyers. It is not a friends-and-family transfer, and it does not settle in Stripe.",
+  },
+  {
+    title: "Zelle does not pass through Stripe.",
+    body: "The customer pushes from a bank app to the enrolled business email, U.S. mobile number, or Zelle tag. The fee and the limit are the bank’s. A screenshot is not the deposit.",
+  },
 ]
 
 export default function HomePage() {
@@ -43,7 +51,7 @@ export default function HomePage() {
         <div className="wrap measure prose">
           <h2>Follow a $400 consult</h2>
           <p>
-            Same job, three rails. The customer is paying for an afternoon. You
+            Same job, several rails. The customer is paying for an afternoon. You
             have not shipped a physical good, so the return window is easier to
             live with than it would be for a laptop.
           </p>
@@ -57,7 +65,10 @@ export default function HomePage() {
             row, if the customer is in Safari with a card in the wallet. The bank
             row is cheaper and slower, and day 4 is not the end of the risk. The
             USDC row is cheaper than the card only if you are willing to learn a
-            mint address and a second set of books. The{" "}
+            mint address and a second set of books. Venmo on the web is the
+            PayPal column, and the $0.49 makes it cost more than the card on
+            these invoices. Zelle says “Bank terms” because this page will not
+            invent your bank’s fee. The{" "}
             <Link href="/path">setup page</Link> is the order of operations. The
             table above also includes a $25 tip, where the 30¢ flat fee hurts,
             and an $1,800 retainer, where the ACH cap starts to matter.
@@ -74,7 +85,10 @@ export default function HomePage() {
           </p>
           <p>
             Add PayPal Checkout, with Venmo enabled, only if customers already
-            ask for it. Add bank debits only after you can wait out returns.
+            ask for it. Zelle is not a Stripe button. Enroll it on the LLC’s
+            bank account only if that bank offers Zelle for the business
+            account, and ship only after the deposit is in that account. Add
+            bank debits only after you can wait out returns.
             Leave Samsung Pay, and leave mainnet USDC, until a processor confirms
             the button and an accountant has a book for tokens.
           </p>
@@ -85,7 +99,7 @@ export default function HomePage() {
             <Link href="/crypto">USDC on Solana</Link>. Practice on the{" "}
             <Link href="/studio">studio</Link> page. Nothing there moves money.
           </p>
-          <h2>Five sentences worth keeping</h2>
+          <h2>Seven sentences worth keeping</h2>
           <ol>
             {MYTHS.map((myth) => (
               <li key={myth.title}>

@@ -25,6 +25,8 @@ export function InvoiceTrio() {
             <th scope="col">Card fee</th>
             <th scope="col">You keep</th>
             <th scope="col">ACH fee</th>
+            <th scope="col">Venmo on the web</th>
+            <th scope="col">Zelle</th>
             <th scope="col">USDC via Stripe</th>
           </tr>
         </thead>
@@ -40,6 +42,8 @@ export function InvoiceTrio() {
                   {moneyFromCents(keepCents(priced.amountCents, priced.cardCents))}
                 </td>
                 <td className="num">{moneyFromCents(priced.achCents)}</td>
+                <td className="num">{moneyFromCents(priced.venmoCents)}</td>
+                <td>Bank terms</td>
                 <td className="num">{moneyFromCents(priced.usdcCents)}</td>
               </tr>
             )

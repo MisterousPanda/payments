@@ -141,8 +141,18 @@ export const TERMS: readonly Term[] = [
     href: "/crypto",
   },
   {
+    name: "Venmo",
+    body: "On a website, a PayPal Checkout funding source for US buyers, at PayPal’s domestic checkout rate of 3.49% + $0.49. The in-app business profile is a different product and a different fee.",
+    href: "/cards",
+  },
+  {
     name: "WEB",
     body: "The Nacha code for a consumer debit authorized over the internet. It requires account validation, not just a typed routing number you hope is real.",
+    href: "/bank",
+  },
+  {
+    name: "Zelle",
+    body: "A bank-app transfer run by Early Warning Services. The customer pushes money to an enrolled business email, U.S. mobile number, or Zelle tag. It is not a Stripe button. The fee and the limit come from the bank.",
     href: "/bank",
   },
 ]

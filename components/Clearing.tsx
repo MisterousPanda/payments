@@ -4,12 +4,12 @@ import { useState } from "react"
 import { RAILS, type RailId } from "@/lib/rails"
 import { RailToggle } from "@/components/RailToggle"
 
-const STATIONS = [8.333, 29.167, 50, 70.833, 91.667]
+const STATIONS = [10, 30, 50, 70, 90]
 
 export function Clearing() {
   const [rail, setRail] = useState<RailId>("card")
   const current = RAILS.find((item) => item.id === rail) ?? RAILS[0]
-  const labels = ["Payer", current.instrument, current.rail, "Stripe", "Account"]
+  const labels = ["Payer", current.instrument, current.rail, current.desk, "Account"]
 
   return (
     <section className="hero" aria-labelledby="clearing-title">
@@ -20,7 +20,7 @@ export function Clearing() {
             How the money actually arrives
           </h1>
           <p className="deck">
-            Four rails into one account. Authorization is not settlement, and
+            Six ways into one account. Authorization is not settlement, and
             settlement is not always final.
           </p>
         </div>
@@ -45,17 +45,8 @@ export function Clearing() {
             </div>
             <div className="station-labels">
               {labels.map((label, index) => (
-                <span key={STATIONS[index]} style={{ left: `${STATIONS[index]}%` }}>
-                  {label}
-                </span>
+                <span key={STATIONS[index]}>{label}</span>
               ))}
-              <span
-                className={current.tag ? "tag-slot on" : "tag-slot"}
-                style={{ left: "29.167%" }}
-                aria-hidden={current.tag ? undefined : true}
-              >
-                {current.tag ?? "Plaid · account check"}
-              </span>
             </div>
           </div>
           <div className="stack" aria-hidden="true">
@@ -65,16 +56,24 @@ export function Clearing() {
               {labels.map((label) => (
                 <li key={label}>
                   <strong>{label}</strong>
-                  {label === current.instrument && current.tag ? (
-                    <span className="quiet"> {current.tag}</span>
-                  ) : null}
                 </li>
               ))}
             </ol>
           </div>
-          <div aria-live="polite">
-            <p className="plaque">{current.plaque}</p>
-            <p className="caption">{current.caption}</p>
+          <div className={current.figure ? "rail-read has-figure" : "rail-read"}>
+            {current.figure ? (
+              <img
+                className="rail-figure"
+                src={current.figure.src}
+                alt={current.figure.alt}
+                width={960}
+                height={540}
+              />
+            ) : null}
+            <div aria-live="polite">
+              <p className="plaque">{current.plaque}</p>
+              <p className="caption">{current.caption}</p>
+            </div>
           </div>
           <p className="quiet">No payment is sent. Toggles only change the picture.</p>
         </div>

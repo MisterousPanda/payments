@@ -40,8 +40,32 @@ const DOCKETS = [
     ],
   },
   {
-    id: "usdc",
+    id: "venmo",
     index: "04",
+    title: "Venmo",
+    lines: [
+      ["Payer uses", "The Venmo app. On a phone, Safari or Chrome. On a desktop, the phone approves."],
+      ["What moves", "A PayPal Checkout payment with Venmo as the funding source. US buyers, USD."],
+      ["When it lands", "In PayPal, not in Stripe. The bank payout is a separate PayPal step."],
+      ["What can undo it", "PayPal’s dispute process for goods and services, not a friends-and-family transfer."],
+      ["Fee on this page", "3.49% + $0.49 for standard domestic checkout. The in-app business profile is a different rate."],
+    ],
+  },
+  {
+    id: "zelle",
+    index: "05",
+    title: "Zelle",
+    lines: [
+      ["Payer uses", "Their own bank app, sending to your enrolled email, U.S. mobile number, or Zelle tag."],
+      ["What moves", "A push into the business account. You do not pull it, and Stripe is not in the middle."],
+      ["When it lands", "Typically minutes, if both sides are enrolled and the bank offers Zelle on that account."],
+      ["What can undo it", "Not a card dispute and not an ACH return. Purchase protection is generally not included."],
+      ["Fee on this page", "None listed. Zelle says the business fee depends on the bank. Ask before you enroll."],
+    ],
+  },
+  {
+    id: "usdc",
+    index: "06",
     title: "USDC",
     lines: [
       ["Payer uses", "A USDC wallet and a little SOL for the network fee."],

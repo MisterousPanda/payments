@@ -5,7 +5,7 @@ import { Ask } from "@/components/Ask"
 export const metadata: Metadata = {
   title: "Cards and wallets",
   description:
-    "How Visa, Mastercard, Amex, Apple Pay, Google Pay, Samsung Pay, and Venmo relate to a processor account.",
+    "How Visa, Mastercard, Amex, Apple Pay, Google Pay, Samsung Pay, Venmo, and Zelle relate to a processor account.",
 }
 
 export default function CardsPage() {
@@ -26,6 +26,7 @@ export default function CardsPage() {
             <li><a href="#google">Google Pay</a></li>
             <li><a href="#samsung">Samsung Pay</a></li>
             <li><a href="#venmo">Venmo</a></li>
+            <li><a href="#zelle">Zelle</a></li>
             <li><a href="#brands">The brands</a></li>
             <li><a href="#pci">Card numbers</a></li>
           </ul>
@@ -121,6 +122,16 @@ export default function CardsPage() {
             friends-and-family account used for sales can be limited. PayPal’s
             footnote says a Venmo Balance account is required to hold a balance,
             effective November 1, 2026.
+          </p>
+
+          <h2 id="zelle">Zelle is not a wallet button</h2>
+          <p>
+            Zelle does not sit next to Apple Pay in Checkout. The customer
+            sends from a bank app to an email, a U.S. mobile number, or a Zelle
+            tag enrolled on the LLC’s account. The picture, the fee, and the
+            limit are on the <Link href="/bank">bank</Link> page. Use it when
+            customers already pay that way. Do not point a personal Zelle
+            enrollment at business revenue.
           </p>
 
           <h2 id="brands">Visa, Mastercard, American Express</h2>

@@ -265,7 +265,7 @@ a {
 }
 
 .diagram-wide {
-  padding: 0 48px;
+  padding: 0 12px;
 }
 
 .rail-box {
@@ -277,8 +277,8 @@ a {
 .rail-line,
 .wax-line {
   position: absolute;
-  left: 8.333%;
-  width: 83.334%;
+  left: 10%;
+  width: 80%;
   top: 26px;
   height: 2px;
 }
@@ -305,7 +305,7 @@ a {
 .mover {
   position: absolute;
   top: 19px;
-  left: 8.333%;
+  left: 10%;
   width: 14px;
   height: 14px;
   margin-left: -7px;
@@ -317,8 +317,8 @@ a {
 .return-arc {
   position: absolute;
   top: 36px;
-  left: 70.833%;
-  width: 20.834%;
+  left: 70%;
+  width: 20%;
   height: 10px;
   border-bottom: 1.5px dashed var(--wax);
   opacity: 0;
@@ -347,35 +347,39 @@ a {
 }
 
 .station-labels {
-  position: relative;
-  height: 72px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
   margin-top: 8px;
 }
 
-.station-labels span,
-.tag-slot {
-  position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  width: 108px;
+.station-labels span {
+  display: block;
+  min-width: 0;
   text-align: center;
   font-size: 14px;
   line-height: 18px;
   font-weight: 560;
   letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
 }
 
-.tag-slot {
-  top: 40px;
-  color: var(--brass);
-  font-weight: 560;
-  opacity: 0;
-  min-height: 18px;
+.rail-read {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  margin-top: 28px;
 }
 
-.tag-slot.on {
-  opacity: 1;
-  transition: opacity 180ms var(--swap);
+.rail-read .plaque {
+  margin-top: 0;
+}
+
+.rail-figure {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--paper);
 }
 
 .ink-band {
@@ -998,7 +1002,8 @@ a {
 }
 
 .clearing[data-rail="card"] .mover,
-.clearing[data-rail="apple"] .mover {
+.clearing[data-rail="apple"] .mover,
+.clearing[data-rail="venmo"] .mover {
   animation: travel-card 2500ms infinite, fill-card 2500ms linear infinite;
 }
 
@@ -1007,7 +1012,8 @@ a {
   background: var(--wax);
 }
 
-.clearing[data-rail="usdc"] .mover {
+.clearing[data-rail="usdc"] .mover,
+.clearing[data-rail="zelle"] .mover {
   animation: travel-usdc 1800ms infinite;
   background: var(--wax);
 }
@@ -1019,7 +1025,8 @@ a {
 }
 
 .clearing[data-rail="card"] .wax-line,
-.clearing[data-rail="apple"] .wax-line {
+.clearing[data-rail="apple"] .wax-line,
+.clearing[data-rail="venmo"] .wax-line {
   animation: grow-line 2500ms infinite;
 }
 
@@ -1027,7 +1034,8 @@ a {
   animation: grow-line-bank 2900ms infinite;
 }
 
-.clearing[data-rail="usdc"] .wax-line {
+.clearing[data-rail="usdc"] .wax-line,
+.clearing[data-rail="zelle"] .wax-line {
   animation: grow-line-usdc 1800ms infinite;
 }
 
@@ -1062,7 +1070,8 @@ a {
 }
 
 .clearing[data-rail="card"] .stack-packet,
-.clearing[data-rail="apple"] .stack-packet {
+.clearing[data-rail="apple"] .stack-packet,
+.clearing[data-rail="venmo"] .stack-packet {
   animation: stack-card 2500ms infinite, stack-fill 2500ms linear infinite;
 }
 
@@ -1071,28 +1080,29 @@ a {
   background: var(--wax);
 }
 
-.clearing[data-rail="usdc"] .stack-packet {
+.clearing[data-rail="usdc"] .stack-packet,
+.clearing[data-rail="zelle"] .stack-packet {
   animation: stack-usdc 1800ms infinite;
   background: var(--wax);
 }
 
 @keyframes travel-card {
   0% {
-    left: 8.333%;
+    left: 10%;
     opacity: 1;
     animation-timing-function: var(--out);
   }
   56% {
-    left: 91.667%;
+    left: 90%;
     opacity: 1;
     animation-timing-function: linear;
   }
   84% {
-    left: 91.667%;
+    left: 90%;
     opacity: 1;
   }
   100% {
-    left: 91.667%;
+    left: 90%;
     opacity: 0;
   }
 }
@@ -1110,42 +1120,42 @@ a {
 
 @keyframes travel-bank {
   0% {
-    left: 8.333%;
+    left: 10%;
     opacity: 1;
     animation-timing-function: var(--out);
   }
   62% {
-    left: 91.667%;
+    left: 90%;
     opacity: 1;
     animation-timing-function: linear;
   }
   86% {
-    left: 91.667%;
+    left: 90%;
     opacity: 1;
   }
   100% {
-    left: 91.667%;
+    left: 90%;
     opacity: 0;
   }
 }
 
 @keyframes travel-usdc {
   0% {
-    left: 8.333%;
+    left: 10%;
     opacity: 1;
     animation-timing-function: var(--out);
   }
   39% {
-    left: 91.667%;
+    left: 90%;
     opacity: 1;
     animation-timing-function: linear;
   }
   78% {
-    left: 91.667%;
+    left: 90%;
     opacity: 1;
   }
   100% {
-    left: 91.667%;
+    left: 90%;
     opacity: 0;
   }
 }
@@ -1331,7 +1341,7 @@ a {
   }
 
   .shelf {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .clocks {
@@ -1350,6 +1360,21 @@ a {
   .docket.open button {
     flex: 0 0 auto;
     min-height: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .diagram-wide {
+    padding: 0 48px;
+  }
+
+  .rail-figure {
+    max-width: 440px;
+  }
+
+  .rail-read.has-figure {
+    grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+    column-gap: 28px;
   }
 }
 
@@ -1419,14 +1444,13 @@ a {
   .brass-lock,
   .stack-packet,
   .fee-bar,
-  .panel-grid,
-  .tag-slot {
+  .panel-grid {
     animation: none !important;
     transition: none !important;
   }
 
   .mover {
-    left: 91.667%;
+    left: 90%;
     opacity: 1;
     background: var(--wax);
   }
